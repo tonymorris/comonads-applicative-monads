@@ -8,10 +8,14 @@
 \usepackage{listings}
 \usepackage{tikz}
 \usepackage{amssymb}
+\usepackage[normalem]{ulem}
 \usepackage{textcomp}
 \usepackage{verbatim}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
+\usepackage{colortbl}
+\usepackage{amsmath,amssymb}
+
 \usetikzlibrary{shapes.callouts,shadows, calc}
 
 \tikzset{note/.style={rectangle callout, rounded corners,fill=gray!20,drop shadow,font=\footnotesize}}    
@@ -64,7 +68,7 @@
   basicstyle=\ttfamily,
   moredelim=**[is][\btHL]{`}{`}
 }
-\lstdefinestyle{java}{
+\lstdefinestyle{language}{
   language=java,
   basicstyle=\footnotesize\ttfamily,
   stringstyle=\color{darkgreen}\ttfamily,
@@ -90,6 +94,15 @@
   \titlepage
 \end{frame}
 
+\input{goals}
 \input{principled-things}
+\input{syntax}
+\input{mappable}
+\input{mappable-pause}
+\input{monad}
+\input{comonad}
+\input{applicative}
+\input{deep-breaf}
+\input{useful}
 
 \end{document}

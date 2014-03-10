@@ -1,0 +1,89 @@
+\begin{frame}[fragile]
+\frametitle{Monad}
+\framesubtitle{The interface}
+\begin{block}{Java 8/C\# with the addition of higher-kinded polymorphism}
+\begin{lstlisting}[style=language,language=java]
+interface Monad<T> {
+  <A> T<A> join(T<T<A>> a);
+  <X> T<X> unit(X x);
+}
+\end{lstlisting}
+\end{block}
+\begin{block}{Haskell}
+\begin{lstlisting}[style=language,language=haskell]
+class Monad t where
+  join :: t (t a) -> t a
+  unit :: x -> t x
+\end{lstlisting}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Monad}
+\begin{itemize}
+\item The monad interface has laws too.
+\item The monad interface has strictly stronger requirements than functor.
+  \begin{itemize}
+  \item In other words, all structures that are monads, are also functors.
+  \item However, not all structures that are functors, are also monads.
+  \end{itemize}
+\item Therefore, there are fewer monad instances than functor instances.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Monad}
+\framesubtitle{The instances}
+\begin{block}{But still a \emph{very large} amount}
+\begin{itemize}
+\item \lstinline{List}
+\item Reader \lstinline{((->) e)}
+\item \lstinline{State s}
+\item \lstinline{Continuation r}
+\item \lstinline{Maybe/Nullable}
+\item \lstinline{Exception}
+\item \lstinline{Writer w}
+\item \lstinline{Free f}
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Monad}
+\framesubtitle{The operations}
+\begin{block}{and lots of operations too}
+\begin{itemize}
+\item \lstinline{sequence :: [t a] -> t [a]}
+\item \lstinline{filterM :: (a -> t Bool) -> [a] -> t [a]}
+\item \lstinline{findM :: (a -> t Bool) -> [a] -> Maybe [a]}
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Monad}
+\framesubtitle{Some mythbusting}
+\begin{center}
+\textbf{This} is what monad is for.
+\end{center}
+\begin{center}
+\begin{itemize}
+\item A lawful interface.
+\item Satisfied by lots of instances.
+\item Gives rise to lots of useful operations.
+\end{itemize}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Monad}
+\framesubtitle{Some mythbusting}
+\begin{itemize}
+\item<1-> \sout{Controlling side-effects.}
+\item<2-> \sout{Monads make my program impure.}
+\item<3-> \sout{Monads \emph{something blah something} IO.}
+\item<4-> \sout{\emph{blah blah} in \lstinline{$SPECIFIC_PROGRAMMING_LANGUAGE}.}
+\item<5-> \sout{\emph{blah blah} relating to \lstinline{$SPECIFIC_MONAD_INSTANCE}.}
+\item<6-> Too much bullshizzles to enumerate. Beware.
+\end{itemize}
+\end{frame}

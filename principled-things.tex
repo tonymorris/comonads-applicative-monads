@@ -1,13 +1,82 @@
 \begin{frame}
 \frametitle{Principled Things}
+\begin{itemize}
+\item<1-> What do we mean by a principled thing?
+\item<2-> Principled reasoning gives rise to useful inferences.
+\begin{center}
+\begin{tabular}{c@{\,}l@{}} 
+  & $p$ \\
+  & $p \to q$ \\\cline{2-2}
+  $\therefore$         
+  & $q$ \\
+\end{tabular}
+\end{center}
+\end{itemize}
+\end{frame}
 
-\begin{center}What exactly is a principled thing?\end{center}
+\begin{frame}[fragile]
+\frametitle{Principled reasoning is already familiar}
+\framesubtitle{using Java/C\# syntax}
+\begin{lstlisting}[style=language,language=java]
+enum Order { LT, EQ, GT }
 
+interface Compare<A> {
+  Order compare(A a1, A a2);
+}
+\end{lstlisting}
+\begin{block}{We define this interface because}
+\begin{itemize}
+\item We can produce data structures to satisfy the interface.
+\item We can define operations that function on all instances of the interface.
+\end{itemize}
+\end{block}
 \end{frame}
 
 \begin{frame}
-\frametitle{We will use Java/C# like syntax}
+\frametitle{Principled Reasoning}
+\begin{block}{Data structures such as}
+\begin{itemize}
+\item integers
+\item strings
+\item list of elements where the elements can be compared
+\end{itemize}
+\end{block}
+\begin{block}{Operations such as}
+\begin{itemize}
+\item \lstinline{List\#sort}
+\item \lstinline{Tree\#insert}
+\item \lstinline{List\#maximum}
+\end{itemize}
+\end{block}
+\end{frame}
 
-\begin{center}Do you remember when Java or C# was a thing?\end{center}
+\begin{frame}
+\frametitle{Principled Things}
+\framesubtitle{Laws}
+We might also define constraints required of instances.
+\begin{block}{For example}
+\begin{itemize}
+\item if \lstinline{compare(x, y) == LT} then \lstinline{compare(y, x) == GT}
+\item if \lstinline{compare(x, y) == EQ} then \lstinline{compare(y, x) == EQ}
+\item if \lstinline{compare(x, y) == GT} then \lstinline{compare(y, x) == LT}
+\end{itemize}
+\end{block}
+We will call these \emph{laws}. Laws enable reasoning on abstract code.
+\end{frame}
 
+\begin{frame}
+\frametitle{Summary}
+\begin{itemize}
+\item interface
+\item law-abiding instances
+\item derived operations
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Principled Reasoning for Practical Application}
+\begin{itemize}
+\item We try to maximise instances and derived operations, however, these two points often trade against each other.
+\item Obtaining the best practical outcome requires careful application of \emph{principled reasoning}.
+\end{itemize}
 \end{frame}
