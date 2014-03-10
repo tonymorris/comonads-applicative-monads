@@ -1,13 +1,57 @@
 \begin{frame}
 \frametitle{Principled Things}
+\begin{itemize}
+\item<1> What do we mean by a principled thing?
+\item<2> Principled reasoning gives rise to useful inferences.
+\end{itemize}
+\end{frame}
 
-\begin{center}What exactly is a principled thing?\end{center}
+\begin{frame}[fragile]
+\frametitle{Principled reasoning is already familiar}
+\framesubtitle{using Java/C\# syntax}
+\begin{lstlisting}[style=java]
+enum Order { LT, EQ, GT }
 
+interface Compare<A> {
+  Order compare(A a1, A a2);
+}
+\end{lstlisting}
+\begin{block}{We define this interface because}
+\begin{itemize}
+\item we can produce data structures to satisfy the interface.
+\item we can define operations that function on all instances of the interface.
+\end{itemize}
+\end{block}
 \end{frame}
 
 \begin{frame}
-\frametitle{We will use Java/C# like syntax}
+\frametitle{Principled Reasoning}
+\begin{block}{Data structures such as}
+\begin{itemize}
+\item integers
+\item strings
+\item list of elements where the elements can be compared
+\end{itemize}
+\end{block}
+\begin{block}{Operations such as}
+\begin{itemize}
+\item \lstinline{List\#sort}
+\item \lstinline{Tree\#insert}
+\item \lstinline{List\#maximum}
+\end{itemize}
+\end{block}
+\end{frame}
 
-\begin{center}Do you remember when Java or C# was a thing?\end{center}
-
+\begin{frame}
+\frametitle{Principled Things}
+\framesubtitle{Laws}
+We might also define additional constraints required on instances.
+\begin{block}{For example}
+\begin{itemize}
+\item if \lstinline{compare(x, y) == LT} then \lstinline{compare(y, x) == GT}
+\item if \lstinline{compare(x, y) == EQ} then \lstinline{compare(x, y) == EQ}
+\item if \lstinline{compare(x, y) == GT} then \lstinline{compare(x, y) == LT}
+\end{itemize}
+\end{block}
+We will call these \emph{laws}.
 \end{frame}
