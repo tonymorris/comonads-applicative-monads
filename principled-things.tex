@@ -49,9 +49,9 @@ We might also define additional constraints required on instances.
 \begin{block}{For example}
 \begin{itemize}
 \item if \lstinline{compare(x, y) == LT} then \lstinline{compare(y, x) == GT}
-\item if \lstinline{compare(x, y) == EQ} then \lstinline{compare(x, y) == EQ}
-\item if \lstinline{compare(x, y) == GT} then \lstinline{compare(x, y) == LT}
+\item if \lstinline{compare(x, y) == EQ} then \lstinline{compare(y, x) == EQ}
+\item if \lstinline{compare(x, y) == GT} then \lstinline{compare(y, x) == LT}
 \end{itemize}
 \end{block}
-We will call these \emph{laws}.
+We will call these \emph{laws}. Laws enable reasoning on abstract code.
 \end{frame}

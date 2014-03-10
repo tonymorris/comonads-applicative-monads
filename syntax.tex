@@ -1,0 +1,20 @@
+\begin{frame}[fragile]
+\frametitle{Some boring syntax issues}
+\begin{block}{Java}
+\begin{lstlisting}[style=java]
+enum Order { LT, EQ, GT }
+
+interface Compare<A> {
+  Order compare(A a1, A a2);
+}
+\end{lstlisting}
+\end{block}
+\begin{block}{Haskell}
+\begin{lstlisting}[style=haskell]
+data Order = LT | EQ | GT
+
+class Compare a where
+  compare :: a -> a -> Order
+\end{lstlisting}
+\end{block}
+\end{frame}
