@@ -1,8 +1,8 @@
 \begin{frame}
 \frametitle{Principled Things}
 \begin{itemize}
-\item<1> What do we mean by a principled thing?
-\item<2> Principled reasoning gives rise to useful inferences.
+\item<1-> What do we mean by a principled thing?
+\item<2-> Principled reasoning gives rise to useful inferences.
 \end{itemize}
 \end{frame}
 
@@ -45,7 +45,7 @@ interface Compare<A> {
 \begin{frame}
 \frametitle{Principled Things}
 \framesubtitle{Laws}
-We might also define additional constraints required on instances.
+We might also define constraints required of instances.
 \begin{block}{For example}
 \begin{itemize}
 \item if \lstinline{compare(x, y) == LT} then \lstinline{compare(y, x) == GT}
@@ -57,7 +57,16 @@ We will call these \emph{laws}. Laws enable reasoning on abstract code.
 \end{frame}
 
 \begin{frame}
-\frametitle{Principled Reasoning}
+\frametitle{Summary}
+\begin{itemize}
+\item interface
+\item law-abiding instances
+\item derived operations
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Principled Reasoning for Practical Application}
 \begin{itemize}
 \item We try to maximise instances and derived operations, however, these two points often trade against each other.
 \item Obtaining the best practical outcome requires careful application of \emph{principled reasoning}.
