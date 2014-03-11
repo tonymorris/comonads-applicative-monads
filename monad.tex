@@ -1,0 +1,20 @@
+\begin{frame}[fragile]
+\frametitle{Monad}
+\framesubtitle{The interface}
+\begin{block}{Java 8 with higher-kinds}
+\begin{lstlisting}[style=language,language=java]
+interface Monad<T> {
+  <A, B> T<B> bind(Function<A, T<B>> f, T<A> a);
+  <X> T<X> unit(X x);
+}
+\end{lstlisting}
+\end{block}
+\begin{block}{Haskell}
+\begin{lstlisting}[style=language,language=haskell]
+class Monad t where
+  bind :: (a -> t b) -> t a -> t b
+  unit :: x -> t x
+\end{lstlisting}
+\end{block}
+\end{frame}
+
