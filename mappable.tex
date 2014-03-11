@@ -46,6 +46,7 @@ map :: (a -> b) -> (e -> a) -> (e -> b)
 map f g = \e -> f (g e)
 \end{lstlisting}
 \end{block}
+\emph{There are an \textbf{enormous} number of instances.}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -53,15 +54,30 @@ map f g = \e -> f (g e)
 \framesubtitle{The derived operations}
 \begin{block}{Map a constant value}
 \begin{lstlisting}[style=language,language=haskell]
-mapConstant :: Mappable f => a -> t b -> t a
+mapConstant :: Mappable t => a -> t b -> t a
 mapConstant a b = fmap (\_ -> a) b
 \end{lstlisting}
 \end{block}
-\begin{block}{Reader \lstinline{((->) e)}}
+\begin{block}{Map function application}
 \begin{lstlisting}[style=language,language=haskell]
-mapApply :: t (a -> b) -> a -> t b
+mapApply :: Mappable t => t (a -> b) -> a -> t b
 mapApply f a = fmap (\g -> g a) f
-
 \end{lstlisting}
 \end{block}
+\emph{The set of derived operations is relatively small.}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Mappable}
+\framesubtitle{Summary}
+\begin{itemize}
+\item The more common name for \lstinline{Mappable} is a \emph{functor}.
+\item We have seen:
+  \begin{itemize}
+  \item The functor interface
+  \item The functor laws
+  \item The functor instances
+  \item The derived operations of a functor
+  \end{itemize}
+\end{itemize}
 \end{frame}
