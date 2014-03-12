@@ -1,7 +1,7 @@
 \begin{frame}[fragile]
 \frametitle{Monad}
 \framesubtitle{The interface}
-\begin{block}{Java 8 with the addition of higher-kinded polymorphism}
+\begin{block}{Java 8/C\# with the addition of higher-kinded polymorphism}
 \begin{lstlisting}[style=language,language=java]
 interface Monad<T> {
   <A> T<A> join(T<T<A>> a);
@@ -21,20 +21,20 @@ class Monad t where
 \begin{frame}[fragile]
 \frametitle{Monad}
 \begin{itemize}
+\item The monad interface has laws too.
 \item The monad interface has strictly stronger requirements than functor.
   \begin{itemize}
   \item In other words, all structures that are monads, are also functors.
   \item However, not all structures that are functors, are also monads.
   \end{itemize}
 \item Therefore, there are fewer monad instances than functor instances.
-\item The monad interface has laws too.
 \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
 \frametitle{Monad}
 \framesubtitle{The instances}
-\begin{block}{But still an \emph{enormous} amount}
+\begin{block}{But still a \emph{very large} amount}
 \begin{itemize}
 \item \lstinline{List}
 \item Reader \lstinline{((->) e)}

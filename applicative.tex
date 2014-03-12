@@ -1,7 +1,7 @@
 \begin{frame}[fragile]
 \frametitle{Applicative Functor}
 \framesubtitle{The interface}
-\begin{block}{Java 8 with the addition of higher-kinded polymorphism}
+\begin{block}{Java 8/C\# with the addition of higher-kinded polymorphism}
 \begin{lstlisting}[style=language,language=java]
 interface Applicative<T> {
   <A, B> T<B> apply(T<Function<A, B>> f, T<A> a);

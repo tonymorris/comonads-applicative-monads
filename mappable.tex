@@ -1,7 +1,7 @@
 \begin{frame}[fragile]
 \frametitle{Mappable}
 \framesubtitle{The interface}
-\begin{block}{Java 8 with higher-kinds}
+\begin{block}{Java 8/C\# with the addition of higher-kinded polymorphism}
 \begin{lstlisting}[style=language,language=java]
 interface Mappable<T> {
   <A, B> T<B> map(Function<A, B> f, T<A> a);
@@ -86,11 +86,4 @@ mapApply f a = fmap (\g -> g a) f
   \item The derived operations of a functor
   \end{itemize}
 \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Mappable}
-\begin{center}
-\includegraphics[height=3.8cm]{image/Question_mark_road_sign,_Australia.jpg}
-\end{center}
 \end{frame}
