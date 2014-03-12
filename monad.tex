@@ -1,7 +1,7 @@
 \begin{frame}[fragile]
 \frametitle{Monad}
 \framesubtitle{The interface}
-\begin{block}{Java 8 with higher-kinds}
+\begin{block}{Java 8 with the addition of higher-kinded polymorphism}
 \begin{lstlisting}[style=language,language=java]
 interface Monad<T> {
   <A, B> T<B> bind(Function<A, T<B>> f, T<A> a);
@@ -18,3 +18,43 @@ class Monad t where
 \end{block}
 \end{frame}
 
+\begin{frame}[fragile]
+\frametitle{Monad}
+\begin{itemize}
+\item The monad interface has strictly stronger requirements than functor.
+  \begin{itemize}
+  \item In other words, all structures that are monads, are also functors.
+  \item However, not all structures that are functors, are also monads.
+  \end{itemize}
+\item Therefore, there are fewer monad instances than functor instances.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Monad}
+\framesubtitle{The instances}
+\begin{block}{But still an \emph{enormous} amount}
+\begin{itemize}
+\item List
+\item Reader \lstinline{((->) e)}
+\item State
+\item Continuation
+\item Maybe/Nullable
+\item Exception
+\item Writer/Logger
+\item Free
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Monad}
+\framesubtitle{The operations}
+\begin{block}{and lots of operations too}
+\begin{itemize}
+\item \lstinline{sequence :: [t a] -> t [a]}
+\item \lstinline{filterM :: (a -> t Bool) -> [a] -> t [a]}
+\item \lstinline{findM :: (a -> t Bool) -> [a] -> Maybe [a]}
+\end{itemize}
+\end{block}
+\end{frame}
