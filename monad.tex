@@ -4,7 +4,7 @@
 \begin{block}{Java 8 with the addition of higher-kinded polymorphism}
 \begin{lstlisting}[style=language,language=java]
 interface Monad<T> {
-  <A, B> T<B> bind(Function<A, T<B>> f, T<A> a);
+  <A> T<A> join(T<T<A>> a);
   <X> T<X> unit(X x);
 }
 \end{lstlisting}
@@ -12,7 +12,7 @@ interface Monad<T> {
 \begin{block}{Haskell}
 \begin{lstlisting}[style=language,language=haskell]
 class Monad t where
-  bind :: (a -> t b) -> t a -> t b
+  join :: t (t a) -> t a
   unit :: x -> t x
 \end{lstlisting}
 \end{block}
@@ -27,6 +27,7 @@ class Monad t where
   \item However, not all structures that are functors, are also monads.
   \end{itemize}
 \item Therefore, there are fewer monad instances than functor instances.
+\item The monad interface has laws too.
 \end{itemize}
 \end{frame}
 
@@ -35,14 +36,14 @@ class Monad t where
 \framesubtitle{The instances}
 \begin{block}{But still an \emph{enormous} amount}
 \begin{itemize}
-\item List
+\item \lstinline{List}
 \item Reader \lstinline{((->) e)}
-\item State
-\item Continuation
-\item Maybe/Nullable
-\item Exception
-\item Writer/Logger
-\item Free
+\item \lstinline{State s}
+\item \lstinline{Continuation r}
+\item \lstinline{Maybe/Nullable}
+\item \lstinline{Exception}
+\item \lstinline{Writer w}
+\item \lstinline{Free f}
 \end{itemize}
 \end{block}
 \end{frame}
@@ -57,4 +58,30 @@ class Monad t where
 \item \lstinline{findM :: (a -> t Bool) -> [a] -> Maybe [a]}
 \end{itemize}
 \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Monad}
+\framesubtitle{Some mythbusting}
+\begin{center}
+\textbf{This} is what monad is for.
+\end{center}
+\begin{center}
+\begin{itemize}
+\item A lawful interface.
+\item Satisfied by lots of instances.
+\item Gives rise to lots of useful operations.
+\end{itemize}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Monad}
+\framesubtitle{Some mythbusting}
+\begin{itemize}
+\item<1-> \sout{Controlling side-effects.}
+\item<2-> \sout{\lstinline{$BLAH_BLAH} in \lstinline{$SPECIFIC_PROGRAMMING_LANGUAGE}.}
+\item<3-> \sout{\lstinline{$BLAH_BLAH} relating to \lstinline{$SPECIFIC_MONAD_INSTANCE}.}
+\item<4-> Too much bullshizzles to list. Beware.
+\end{itemize}
 \end{frame}
