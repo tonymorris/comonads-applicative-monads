@@ -25,8 +25,8 @@ class Applicative t where
 \item It's just another interface, with laws, instances and operations.
 \item An applicative functor is
   \begin{itemize}
-  \item strictly stronger than functor.
-  \item strictly weaker than monad.
+  \item strictly stronger than functor. All applicatives are functors.
+  \item strictly weaker than monad. All monads are applicative.
   \end{itemize}
 \end{itemize}
 \end{block}
