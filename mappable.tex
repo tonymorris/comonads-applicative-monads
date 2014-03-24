@@ -39,17 +39,15 @@ map (\z -> f (g z)) x == map f (map g x)
 
 \begin{frame}[fragile]
 \frametitle{Mappable}
-\framesubtitle{The instances}
+Instances of things that map\footnote{\lstinline{map} is called \lstinline{Select} in C\#/LINQ.}
 \begin{block}{List \lstinline{[]}}
 \begin{lstlisting}[style=language,language=haskell]
 map :: (a -> b) -> [a] -> [b]
-map f x = foldr ((:) . f) [] x
 \end{lstlisting}
 \end{block}
-\begin{block}{Reader \lstinline{((->) e)}}
+\begin{block}{Reader \lstinline{(e ->)}}
 \begin{lstlisting}[style=language,language=haskell]
 map :: (a -> b) -> (e -> a) -> (e -> b)
-map f g = \e -> f (g e)
 \end{lstlisting}
 \end{block}
 \emph{There are an \textbf{enormous} number of instances.}
@@ -77,13 +75,13 @@ mapApply f a = fmap (\g -> g a) f
 \frametitle{Mappable}
 \framesubtitle{Summary}
 \begin{itemize}
-\item The more common name for \lstinline{Mappable} is a \emph{functor}.
+\item The more common name for \lstinline{Mappable} is a (covariant) \emph{functor}.
 \item We have seen:
   \begin{itemize}
-  \item The functor interface
-  \item The functor laws
-  \item The functor instances
-  \item The derived operations of a functor
+  \item The interface for a functor
+  \item The laws that the functor instances must satisfy
+  \item The instances of the functor interface
+  \item The operations derived from functor
   \end{itemize}
 \end{itemize}
 \end{frame}
