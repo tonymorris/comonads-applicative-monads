@@ -71,7 +71,7 @@ We will call these \emph{laws}. Laws enable reasoning on abstract code.
 \begin{frame}
 \frametitle{Summary}
 \begin{itemize}
-\item interface
+\item a principled interface
 \item law-abiding instances
 \item derived operations
 \end{itemize}
@@ -80,7 +80,8 @@ We will call these \emph{laws}. Laws enable reasoning on abstract code.
 \begin{frame}
 \frametitle{Principled Reasoning for Practical Application}
 \begin{itemize}
-\item We try to maximise instances and derived operations, however, these two points often trade against each other.
+\item We try to maximise instances and derived operations, however, these two objectives often trade against each other.
+\item For example, all things that can \lstinline{compare} can also be tested for equality, but not always the other way around\footnote{such as complex numbers}.
 \item Obtaining the best practical outcome requires careful application of \emph{principled reasoning}.
 \end{itemize}
 \end{frame}

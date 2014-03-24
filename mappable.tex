@@ -21,7 +21,7 @@ class Mappable t where
 \framesubtitle{The laws}
 \begin{block}{Identity}
 \begin{lstlisting}[style=language,language=java]
-x.map(z => z) == x
+x.map(z -> z) == x
 \end{lstlisting}
 \begin{lstlisting}[style=language,language=haskell]
 map (\z -> z) x == x
@@ -29,7 +29,7 @@ map (\z -> z) x == x
 \end{block}
 \begin{block}{Composition}
 \begin{lstlisting}[style=language,language=java]
-x.map(z => f(g(z))) == x.map(g).map(f)
+x.map(z -> f(g(z))) == x.map(g).map(f)
 \end{lstlisting}
 \begin{lstlisting}[style=language,language=haskell]
 map (\z -> f (g z)) x == map f (map g x)
