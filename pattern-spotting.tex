@@ -1,0 +1,197 @@
+\begin{frame}[fragile]
+\frametitle{Familiarity}
+\framesubtitle{Identifying the pattern}
+\begin{block}{Turning a list of potentially \lstinline{null} into a potentially \lstinline{null} list}
+\note{sequence :: [Maybe a] -> Maybe [a]}
+\begin{lstlisting}[style=language]
+args(list)
+  result = new List;
+  foreach el in list
+    if(el == null)
+      return null;
+    else
+      result.add(el);
+  return result;
+\end{lstlisting}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Familiarity}
+\framesubtitle{Identifying the pattern}
+\begin{block}{Applying a list of functions to a single value}
+\note{sequence :: [t -> a] -> t -> a}
+\begin{lstlisting}[style=language]
+args(list, t)
+  result = new List;
+  foreach el in list
+    result.add(el(t));
+  return result;
+\end{lstlisting}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Familiarity}
+\framesubtitle{Identifying the pattern}
+\begin{block}{These expressions share structure}
+\begin{lstlisting}[style=language]
+List (MaybeNull a) -> MaybeNull (List a)
+List ((t ->)    a) -> ((t ->)   (List a))
+List (m         a) -> m         (List a)
+\end{lstlisting}
+\end{block}
+Commonly called \lstinline{sequence}.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Familiarity}
+\framesubtitle{Identifying the pattern again}
+\begin{block}{Keep elements of a list matching a predicate producing \lstinline{null}}
+\note{filterM :: (a -> Maybe Bool) -> [a] -> Maybe [a]}
+\begin{lstlisting}[style=language]
+args(pred, list)
+  result = new List;
+  foreach el in list
+    ans = pred(el);
+    if(ans == null)
+      return null;
+    else if(ans)
+      result.add(el);
+  return result;
+\end{lstlisting}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Familiarity}
+\framesubtitle{Identifying the pattern again}
+\begin{block}{Keep elements of a list matching a predicate with argument passing}
+\note{filterM :: (a -> t -> Bool) -> [a] -> t -> [a]}
+\begin{lstlisting}[style=language]
+args(pred, list, t)
+  result = new List;
+  foreach el in list
+    if(pred(el, t))
+      result.add(el);
+  return result;
+\end{lstlisting}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Familiarity}
+\framesubtitle{Identifying the pattern again}
+\begin{block}{These expressions share structure}
+\begin{lstlisting}[style=language]
+(a -> MaybeNull Bool) -> List a -> MaybeNull (List a)
+(a -> (t ->)    Bool) -> List a -> (t ->)    (List a)
+(a -> m         Bool) -> List a -> m         (List a)
+\end{lstlisting}
+\end{block}
+Commonly called \lstinline{filter}.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Familiarity}
+\framesubtitle{Identifying the pattern, once again}
+\begin{block}{Find the first element matching a predicate with potential \lstinline{null}}
+\note{findM :: (a -> Maybe Bool) -> [a] -> Maybe a}
+\begin{lstlisting}[style=language]
+args(pred, list)
+  result = new List;
+  foreach el in list
+    ans = pred(el);
+    if(ans == null)
+      return null;
+    else if(ans)
+      return a;
+  return null;
+\end{lstlisting}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Familiarity}
+\framesubtitle{Identifying the pattern, once again}
+\begin{block}{Find the first element matching a predicate with argument passing}
+\note{findM :: (a -> t -> Bool) -> [a] -> t -> a}
+\begin{lstlisting}[style=language]
+args(pred, list, t)
+  foreach el in list
+    ans = pred(el, t);
+    if(ans)
+      return true;    
+  return false;
+\end{lstlisting}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Familiarity}
+\framesubtitle{Identifying the pattern}
+\begin{block}{These expressions share structure}
+\begin{lstlisting}[style=language]
+(a -> MaybeNull Bool) -> List a -> MaybeNull Bool
+(a -> (t ->)    Bool) -> List a -> (t ->)    Bool
+(a -> m         Bool) -> List a -> m         Bool
+\end{lstlisting}
+\end{block}
+Commonly called \lstinline{find}.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Familiarity}
+\framesubtitle{Identifying the pattern, last time}
+\begin{block}{Turn a list of lists into a list}
+\note{join :: [[a]] -> [a]}
+\begin{lstlisting}[style=language]
+args(list)
+  result = new List;
+  foreach el in list
+    result.append(el);
+  return result;
+\end{lstlisting}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Familiarity}
+\framesubtitle{Identifying the pattern, last time}
+\begin{block}{Turn a potential \lstinline{null} of potential \lstinline{null} into a potential \lstinline{null}}
+\note{join :: Maybe (Maybe a) -> Maybe a}
+\begin{lstlisting}[style=language]
+args(value)
+  if(value == null)
+    return null;
+  else
+    return value.get;
+\end{lstlisting}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Familiarity}
+\framesubtitle{Identifying the pattern, last time}
+\begin{block}{Apply to the argument, then apply to the argument}
+\note{join :: (t -> t -> a) -> t -> a}
+\begin{lstlisting}[style=language]
+args(f, t)
+  return f(t, t);
+\end{lstlisting}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Familiarity}
+\framesubtitle{Identifying the pattern}
+\begin{block}{These expressions share structure}
+\begin{lstlisting}[style=language]
+List      (List a) ->           List a
+MaybeNull (MaybeNull a) -> MaybeNull a
+((t ->)   (t ->)     a) -> (t ->)    a
+m         (m     a) ->          m    a
+\end{lstlisting}
+\end{block}
+Commonly called \lstinline{join}.
+\end{frame}
