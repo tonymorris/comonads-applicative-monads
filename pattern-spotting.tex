@@ -37,7 +37,7 @@ args(list, t)
 \begin{block}{These expressions share structure}
 \begin{lstlisting}[style=language]
 List (MaybeNull a) -> MaybeNull (List a)
-List ((t ->)    a) -> ((t ->)   (List a))
+List ((t ->)    a) -> (t ->)    (List a)
 List (m         a) -> m         (List a)
 \end{lstlisting}
 \end{block}
@@ -47,7 +47,7 @@ Commonly called \lstinline{sequence}.
 \begin{frame}[fragile]
 \frametitle{Familiarity}
 \framesubtitle{Identifying the pattern again}
-\begin{block}{Keep elements of a list matching a predicate producing \lstinline{null}}
+\begin{block}{Keep elements of a list matching a predicate with potential \lstinline{null}}
 \note{filterM :: (a -> Maybe Bool) -> [a] -> Maybe [a]}
 \begin{lstlisting}[style=language]
 args(pred, list)
@@ -187,10 +187,10 @@ args(f, t)
 \framesubtitle{Identifying the pattern}
 \begin{block}{These expressions share structure}
 \begin{lstlisting}[style=language]
-List      (List a) ->           List a
+List      (List a)      -> List      a
 MaybeNull (MaybeNull a) -> MaybeNull a
-((t ->)   (t ->)     a) -> (t ->)    a
-m         (m     a) ->          m    a
+(t ->)    ((t ->)    a) -> (t ->)    a
+m         (m         a) -> m         a
 \end{lstlisting}
 \end{block}
 Commonly called \lstinline{join}.
