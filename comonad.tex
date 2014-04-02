@@ -13,7 +13,7 @@ interface Comonad<T> {
 \begin{lstlisting}[style=language,language=haskell]
 class Comonad t where
   duplicate :: t a -> t (t a)
-  unit :: t x -> x
+  extract :: t x -> x
 \end{lstlisting}
 \end{block}
 \end{frame}
